@@ -5,85 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script>
-        function computerPlay() {
-            const id = Math.floor(Math.random() * 3);
-
-            if (id == 0) {
-                return "Scissor";
-            } else if (id == 1) {
-                return "Paper";
-            } else {
-                //id == 2
-                return "Rock";
-            }
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection == computerSelection) {
-                return 2;
-            }
-            switch(playerSelection.toLowerCase()) {
-            case "scissor":
-                if (computerSelection.toLowerCase() == "paper") {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            case "paper":
-                if (computerSelection.toLowerCase() == "rock") {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            case "rock":
-                if (computerSelection.toLowerCase() == "scissor") {
-                    return 1;
-                } else {    
-                    return 0;
-                }
-            default:
-                throw new Error("Invalid Input!");
-            }
-        }
-
-        function game() {
-            let playerWinCount = 0;
-            let computerWinCount = 0;
-
-            for (let i = 0; i < 5; i++) {
-                let playerSelection = prompt(`Round ${i + 1}: `).toLowerCase();
-                let computerSelection = computerPlay().toLowerCase();
-
-
-                try {
-                    const roundOutcome = playRound(playerSelection, computerSelection);
-
-                    if (roundOutcome == 1) {
-                        playerWinCount++;
-                        console.log(`You Win! ${playerSelection} beats ${computerSelection}!`);
-                    } else if (roundOutcome == 2) {
-                        console.log("Its a draw!");
-                    } else {
-                        computerWinCount++;
-                        console.log(`You Lose! ${computerSelection} beats ${playerSelection}!`);
-                    }
-                } catch(e) {
-                    console.log("Invalid Input!");
-                    i--;
-                }
-            }
-
-            if (playerWinCount > computerWinCount) {
-                console.log("Congrats, you are the overall winner!");
-            } else if (computerWinCount > playerWinCount) {
-                console.log("You lost overall, better luck next time!");
-            } else {
-                console.log("Its a tie!");
-            }
-        }
-    </script>
+   <div class="roundWinnerDisplay"></div>
+   <div class="scoreboard-container">
+       <div class="playerScoreBoard"></div>
+       <div class="computerScoreBoard"></div>
+   </div>
+   <div class="options-container">
+       <button class="rockButton">ROCK</button>
+       <button class="scissorButton">SCISSOR</button>
+       <button class="paperButton">PAPER</button>
+   </div>
+   <div class="resultDisplay"></div>
 </body>
 </html>

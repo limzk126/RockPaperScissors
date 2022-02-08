@@ -1,0 +1,9 @@
+.options-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreboard-container {
+    display: flex;
+    justify-content: center;
+}
