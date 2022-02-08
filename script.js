@@ -97,39 +97,3 @@ function computerWinRound() {
     computerScore++;
     roundWinnerDisplay.textContent = "Computer wins this round!";
 }
-
-function game() {
-    let playerWinCount = 0;
-    let computerWinCount = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt(`Round ${i + 1}: `).toLowerCase();
-        let computerSelection = computerPlay().toLowerCase();
-
-
-        try {
-            const roundOutcome = playRound(playerSelection, computerSelection);
-
-            if (roundOutcome == 1) {
-                playerWinCount++;
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}!`);
-            } else if (roundOutcome == 2) {
-                console.log("Its a draw!");
-            } else {
-                computerWinCount++;
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}!`);
-            }
-        } catch(e) {
-            console.log("Invalid Input!");
-            i--;
-        }
-    }
-
-    if (playerWinCount > computerWinCount) {
-        console.log("Congrats, you are the overall winner!");
-    } else if (computerWinCount > playerWinCount) {
-        console.log("You lost overall, better luck next time!");
-    } else {
-        console.log("Its a tie!");
-    }
-}
