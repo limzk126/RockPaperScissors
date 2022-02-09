@@ -1,4 +1,4 @@
 # RockPaperScissors
-Rock, Paper and Scissors game written in JavaScript. Currently playable only on the console.
+Rock, Paper and Scissors game written in JavaScript.
 
-Todo: Implement GUI.
+Todo: Improve GUI.
