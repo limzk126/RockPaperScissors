@@ -1,9 +1,37 @@
 .options-container {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
+}
+
+.options-container button {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .scoreboard-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+}
+
+.scoreboard-container div {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resultDisplay {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.playAgain-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
 }

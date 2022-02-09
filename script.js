@@ -1,10 +1,14 @@
+const header = document.querySelector('.header');
 const roundWinnerDisplay = document.querySelector('.roundWinnerDisplay');
+const scoreBoardContainer = document.querySelector('.scoreboard-container');
 const playerScoreBoard = document.querySelector('.playerScoreBoard');
 const computerScoreBoard = document.querySelector('.computerScoreBoard');
 const rockButton = document.querySelector('.rockButton');
 const scissorButton = document.querySelector('.scissorButton');
 const paperButton = document.querySelector('.paperButton');
 const resultDisplay = document.querySelector('.resultDisplay');
+const playAgainContainer = document.querySelector('.playAgain-container');
+const playAgainButton = document.createElement('button');
 
 const SCISSOR = 0;
 const PAPER = 1;
@@ -40,8 +44,8 @@ function computerPlay() {
 }
 
 function updateScoreBoard() {
-    playerScoreBoard.textContent = playerScore;
-    computerScoreBoard.textContent = computerScore;
+    playerScoreBoard.textContent = "player: " + playerScore;
+    computerScoreBoard.textContent = "computer: " + computerScore;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -80,12 +84,39 @@ function playRound(playerSelection, computerSelection) {
         throw new Error("Invalid Input!");
     }
 
-    if (playerScore == 5) {
-        resultDisplay.textContent = "Congrats! you won the best out of 5!";
-        return
-    } else if (computerScore == 5) {
-        resultDisplay.textContent = "You lost the best out of 5! Better luck next time!";
+    if (isWinnerExist()) {
+        endGame();
     }
+}
+
+function isWinnerExist() {
+    return playerScore == 5 || computerScore == 5;
+}
+
+function endGame() {
+    if (playerScore == 5) {
+        resultDisplay.textContent = "Congrats! you won the first to 5!";
+        showPlayAgainButton();
+    } else if (computerScore == 5) {
+        resultDisplay.textContent = "You lost the first to 5! Better luck next time!";
+        showPlayAgainButton();
+    }
+}
+
+function showPlayAgainButton() {
+    playAgainButton.textContent = "Play again!";
+    playAgainButton.addEventListener('click', newGame);
+    playAgainContainer.appendChild(playAgainButton);
+}
+
+function newGame() {
+    playAgainContainer.removeChild(playAgainButton);
+    roundWinnerDisplay.textContent = "";
+    playerScoreBoard.textContent = "";
+    computerScoreBoard.textContent = "";
+    resultDisplay.textContent = "";
+    computerScore = 0;
+    playerScore = 0;
 }
 
 function playerWinRound() {
